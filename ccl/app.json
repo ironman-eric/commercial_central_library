@@ -1,4 +1,15 @@
 {
   "name": "ccl",
-  "displayName": "ccl"
+  "displayName": "ccl",
+  "expo": {
+    "plugins": [
+      [
+        "expo-barcode-scanner",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access camera."
+        }
+      ]
+    ]
+  }
 }
+
