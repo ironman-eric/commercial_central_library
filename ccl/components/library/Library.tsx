@@ -9,7 +9,7 @@ const Library = ({navigation}: any) => {
       <ListBooks />
       <Button
         title="Add Book"
-        onPress={() => navigation.navigate('BarCodeReader')}
+        onPress={() => navigation.navigate('SearchBook')}
       />
     </View>
   );
