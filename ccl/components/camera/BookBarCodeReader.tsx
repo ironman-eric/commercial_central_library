@@ -1,31 +1,10 @@
-import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, StyleSheet, View, Text} from 'react-native';
-import {Book, getBook} from '../../data/Book'
+import React from 'react';
+import {StyleSheet, View, Text} from 'react-native';
 
 const BookBarCodeReader = () => {
-  /*return (
-    <View style={styles.container}>
-      <Text style={styles.headerText}>Camera</Text>
-    </View>
-  );*/
-
-  const [isLoading, setLoading] = useState(true);
-  const [data, setData] = useState<Book>();
-  
-  useEffect(() => {
-    getBook('9780980200447')      
-      .then((data) => setData(data))
-      .catch((error) => console.error(error))
-      .finally(() => setLoading(false));
-  }, []);
-
   return (
     <View style={styles.container}>
-      {isLoading ? (
-        <ActivityIndicator />
-      ) : (
-        <Text>{data?.title}</Text>
-      )}
+      <Text style={styles.headerText}>Camera</Text>
     </View>
   );
 };

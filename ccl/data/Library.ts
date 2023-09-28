@@ -1,17 +1,10 @@
 import {Book} from './Book';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export function listBooks(): Book[] {
-  const books = [
-    {
-      title: 'Endurance',
-    },
-    {
-      title: 'Purple Reign',
-    },
-    {
-      title: 'Socrates',
-    },
-  ];
+export async function listBooks(): Promise<Book[]> {
+  const keys = await AsyncStorage.getAllKeys();
 
-  return books;
+  return keys.map(book => ({
+    title: book,
+  }));
 }
