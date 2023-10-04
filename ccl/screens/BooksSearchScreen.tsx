@@ -40,18 +40,23 @@ const styles = StyleSheet.create({
   },
 });
 
-const BooksSearchScreen = ({ navigation }: any) => {
+const BooksSearchScreen = ({ route, navigation }: any) => {
+  const { data } = route.params;
   const [isLoading, setLoading] = useState(false);
   const [books, setBooks] = useState<Book[]>([]);
-  const [_, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState(data);
+
+  
+  //searchFilterFunction(data);
 
   function searchFilterFunction(text: any) {
     setSearchText(text);
   }
-
+  
   function makeRequest() {
+    console.log(searchText)
     setLoading(true);
-    searchBook('9780980200447')
+    searchBook(data)
       .then(data => setBooks(data))
       .catch(error => console.error(error))
       .finally(() => setLoading(false));
@@ -83,7 +88,7 @@ const BooksSearchScreen = ({ navigation }: any) => {
         style={styles.textInputStyle}
         onChangeText={text => searchFilterFunction(text)}
         underlineColorAndroid="transparent"
-        placeholder="Search Here"
+        defaultValue={data.trim()}
       />
       <Button title="Find Book" onPress={() => makeRequest()} />
 

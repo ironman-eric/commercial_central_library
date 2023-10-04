@@ -9,7 +9,7 @@ const LibraryScreen = ({navigation}: any) => {
       <ListBooks />
       <Button
         title="Add Book"
-        onPress={() => navigation.navigate('SearchBook')}
+        onPress={() => navigation.navigate('BookBarCodeReader')}
       />
     </View>
   );

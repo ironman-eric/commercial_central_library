@@ -8,6 +8,7 @@
 import * as React from 'react';
 import Library from './screens/LibraryScreen';
 import SearchBook from './screens/BooksSearchScreen';
+import BookBarCodeReader from './components/camera/BookBarCodeReader';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -24,6 +25,7 @@ function App(): JSX.Element {
           options={{title: 'Library'}}
         />
         <Stack.Screen name="SearchBook" component={SearchBook} />
+        <Stack.Screen name="BookBarCodeReader" component={BookBarCodeReader} />        
       </Stack.Navigator>
     </NavigationContainer>
   );
