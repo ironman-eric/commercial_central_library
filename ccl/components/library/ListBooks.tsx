@@ -3,21 +3,34 @@ import {
   FlatList,
   StyleSheet,
   Text,
+  Button,
   View,
   ActivityIndicator,
 } from 'react-native';
-import { Book, listBooks } from '../../data/Book';
+import { Book, listBooks, deleteBook, clearBooks } from '../../data/Book';
 
 const ListBooks = () => {
   const [isLoading, setLoading] = useState(true);
-  const [data, setData] = useState<Book[]>();
+  const [data, setData] = useState<Book[]>();  
 
-  useEffect(() => {
+  function loadBooks() {
     listBooks()
       .then(books => setData(books))
       .catch(error => console.error(error))
       .finally(() => setLoading(false));
+  }
+
+  useEffect(() => {
+    loadBooks()
   }, []);
+
+  function makeRequest(book: Book) {
+    setLoading(true);
+    deleteBook(book)
+      .then(() => loadBooks())
+      .catch(error => console.error(error))
+      .finally(() => setLoading(false));
+  }
 
   return (
     <View style={styles.container}>
@@ -26,7 +39,12 @@ const ListBooks = () => {
       ) : (
         <FlatList
           data={data}
-          renderItem={({ item }) => <Text style={styles.item}>{item.title}</Text>}
+          renderItem={({ item }) => (
+            <View style={styles.container}>
+              <Text style={styles.item}>{item.title}</Text> 
+              <Button title="Remove Book" onPress={() => makeRequest(item)} />
+            </View>
+          )}
         />
       )}
     </View>
