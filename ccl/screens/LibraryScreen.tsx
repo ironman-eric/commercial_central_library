@@ -1,8 +1,8 @@
 import React from 'react';
 import {StyleSheet, View, Text, Button} from 'react-native';
-import ListBooks from './ListBooks';
+import ListBooks from '../components/library/ListBooks';
 
-const Library = ({navigation}: any) => {
+const LibraryScreen = ({navigation}: any) => {
   return (
     <View style={styles.container}>
       <Text style={styles.headerText}>My Books</Text>
@@ -28,4 +28,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Library;
+export default LibraryScreen;

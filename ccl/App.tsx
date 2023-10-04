@@ -6,8 +6,8 @@
  */
 
 import * as React from 'react';
-import Library from './components/library/Library';
-import SearchBook from './components/library/SearchBooks';
+import Library from './screens/LibraryScreen';
+import SearchBook from './screens/BooksSearchScreen';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';

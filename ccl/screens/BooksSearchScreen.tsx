@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   FlatList,
   StyleSheet,
@@ -9,7 +9,8 @@ import {
   ActivityIndicator,
   TouchableOpacity,
 } from 'react-native';
-import {Book, searchBook, saveBook} from '../../data/Book';
+import { searchBook } from '../data/OpenLibrary';
+import { Book, saveBook } from '../data/Book';
 
 const styles = StyleSheet.create({
   container: {
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const SearchBook = ({navigation}: any) => {
+const BooksSearchScreen = ({ navigation }: any) => {
   const [isLoading, setLoading] = useState(false);
   const [books, setBooks] = useState<Book[]>([]);
   const [_, setSearchText] = useState('');
@@ -86,9 +87,9 @@ const SearchBook = ({navigation}: any) => {
       />
       <Button title="Find Book" onPress={() => makeRequest()} />
 
-      <FlatList data={books} renderItem={({item}) => renderItem(item)} />
+      <FlatList data={books} renderItem={({ item }) => renderItem(item)} />
     </View>
   );
 };
 
-export default SearchBook;
+export default BooksSearchScreen;
