@@ -16,7 +16,7 @@ export default function BookBarCodeReader({ navigation }: any) {
   }, []);
 
   const handleBarCodeScanned = ({ type, data }: any) => {
-    navigation.navigate('SearchBook', {
+    navigation.navigate('BookSearch', {
       type: type,
       data: data,
     })

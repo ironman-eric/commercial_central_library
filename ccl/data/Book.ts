@@ -3,6 +3,9 @@ import storage from './Storage';
 export type Book = {
   isbn: string;
   title: string;
+  author: string;
+  number_of_pages: string;
+  cover: string;
 };
 
 export async function saveBook(book: Book) {

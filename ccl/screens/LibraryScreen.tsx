@@ -1,11 +1,10 @@
 import React from 'react';
-import {StyleSheet, View, Text, Button} from 'react-native';
+import { StyleSheet, View, Button } from 'react-native';
 import ListBooks from '../components/library/ListBooks';
 
-const LibraryScreen = ({navigation}: any) => {
+const LibraryScreen = ({ navigation }: any) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.headerText}>My Books</Text>
       <ListBooks />
       <Button
         title="Add Book"
@@ -19,12 +18,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 1,
-  },
-  headerText: {
-    padding: 10,
-    fontSize: 18,
-    fontWeight: 'bold',
-    height: 44,
   },
 });
 
