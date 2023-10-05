@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import {
   FlatList,
   StyleSheet,
-  Text,
+  Button,
   View,
   ActivityIndicator,
 } from 'react-native';
-import { Book, listBooks } from '../../data/Book';
+import { Book, listBooks, deleteBook } from '../../data/Book';
+import BookCard from '../book/BookCard';
 
 const ListBooks = () => {
   const [isLoading, setLoading] = useState(true);
@@ -19,6 +20,20 @@ const ListBooks = () => {
       .finally(() => setLoading(false));
   }, []);
 
+  const handleRemoveBook = (book: Book) => {    
+    deleteBook(book)      
+      .catch(error => console.error(error))      
+  };
+
+  const renderItem = (book: any) => {
+    return (
+      <View>
+        <BookCard book={book} />
+        <Button title="Remove Book" onPress={() => handleRemoveBook(book)} />
+      </View>  
+    );
+  };
+
   return (
     <View style={styles.container}>
       {isLoading ? (
@@ -26,7 +41,7 @@ const ListBooks = () => {
       ) : (
         <FlatList
           data={data}
-          renderItem={({ item }) => <Text style={styles.item}>{item.title}</Text>}
+          renderItem={({ item }) => renderItem(item)}
         />
       )}
     </View>
@@ -37,12 +52,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 1,
-  },
-  item: {
-    padding: 10,
-    fontSize: 14,
-    height: 44,
-  },
+  },  
 });
 
 export default ListBooks;
