@@ -8,27 +8,25 @@
 import * as React from 'react';
 import Library from './screens/LibraryScreen';
 import SearchBook from './screens/BookSearchScreen';
-import BookSearch from './components/book/BookSearch';
-import BookBarCodeReader from './components/camera/BookBarCodeReader';
+import BookScanScreen from './screens/BookScanScreen';
 
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 function App(): JSX.Element {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
+      <Tab.Navigator>
+        <Tab.Screen
           name="Home"
           component={Library}
           options={{ title: 'Library' }}
         />
-        <Stack.Screen name="SearchBook" component={SearchBook} options={{ title: 'Book Search' }} />
-        <Stack.Screen name="BookBarCodeReader" component={BookBarCodeReader} options={{ title: 'Book Scan' }} />
-        <Stack.Screen name="BookSearch" component={BookSearch} options={{ title: 'Book Search' }} />
-      </Stack.Navigator>
+        <Tab.Screen name="SearchBook" component={SearchBook} options={{ title: 'Book Search' }} />
+        <Tab.Screen name="BookScanScreen" component={BookScanScreen} options={{ title: 'Book Scan' }} />        
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }

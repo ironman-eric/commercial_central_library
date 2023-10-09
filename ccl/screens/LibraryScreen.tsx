@@ -1,15 +1,11 @@
 import React from 'react';
-import { StyleSheet, View, Button } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import ListBooks from '../components/library/ListBooks';
 
-const LibraryScreen = ({ navigation }: any) => {
+const LibraryScreen = () => {
   return (
     <View style={styles.container}>
       <ListBooks />
-      <Button
-        title="Add Book"
-        onPress={() => navigation.navigate('BookBarCodeReader')}
-      />
     </View>
   );
 };

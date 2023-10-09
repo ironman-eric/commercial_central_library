@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
-export default function BookBarCodeReader({ navigation }: any) {
+export default function BookBarCodeReader({ handleScanBook }: any) {
   const [hasPermission, setHasPermission] = useState(false);
   const [scanned, setScanned] = useState(false);
 
@@ -16,10 +16,7 @@ export default function BookBarCodeReader({ navigation }: any) {
   }, []);
 
   const handleBarCodeScanned = ({ type, data }: any) => {
-    navigation.navigate('BookSearch', {
-      type: type,
-      data: data,
-    })
+    handleScanBook(data)
     setScanned(true);
   };
 
