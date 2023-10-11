@@ -51,6 +51,9 @@ Room for improvement:
 To do:
 
 - Check out a book
+- failed to find book
+- better UI feedback
+- better list refresh
 
 ## Contact
 
